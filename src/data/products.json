@@ -1,0 +1,68 @@
+[
+  {
+    "id": "p-101",
+    "name": "Aero Knit Sneakers",
+    "category": "Sneakers",
+    "price": 79,
+    "rating": 4.7,
+    "badge": "Best Seller",
+    "description": "Breathable knit running sneakers with cloud-soft sole for all-day comfort.",
+    "color": "#1d4ed8",
+    "image": "https://picsum.photos/seed/streamline-sneakers-1/600/400"
+  },
+  {
+    "id": "p-102",
+    "name": "Urban Street Tee",
+    "category": "T-Shirts",
+    "price": 29,
+    "rating": 4.4,
+    "badge": "New",
+    "description": "100% cotton, regular fit, prewashed everyday t-shirt.",
+    "color": "#0f766e",
+    "image": "https://picsum.photos/seed/streamline-tee-1/600/400"
+  },
+  {
+    "id": "p-103",
+    "name": "Chrono Steel Watch",
+    "category": "Watches",
+    "price": 149,
+    "rating": 4.8,
+    "badge": "Limited",
+    "description": "Stainless steel watch with sapphire-coated glass and waterproof body.",
+    "color": "#92400e",
+    "image": "https://picsum.photos/seed/streamline-watch-1/600/400"
+  },
+  {
+    "id": "p-104",
+    "name": "Daily Canvas Tote",
+    "category": "Bags",
+    "price": 39,
+    "rating": 4.5,
+    "badge": "Trending",
+    "description": "Lightweight canvas tote with inner zip pocket and reinforced handles.",
+    "color": "#9d174d",
+    "image": "https://picsum.photos/seed/streamline-bag-1/600/400"
+  },
+  {
+    "id": "p-105",
+    "name": "Sprint Max Sneakers",
+    "category": "Sneakers",
+    "price": 95,
+    "rating": 4.6,
+    "badge": "Hot",
+    "description": "Performance sneakers with responsive foam and anti-slip outsole.",
+    "color": "#7c3aed",
+    "image": "https://picsum.photos/seed/streamline-sneakers-2/600/400"
+  },
+  {
+    "id": "p-106",
+    "name": "Minimal Core Tee",
+    "category": "T-Shirts",
+    "price": 26,
+    "rating": 4.2,
+    "badge": "Budget Pick",
+    "description": "Soft jersey t-shirt with subtle stitched logo and relaxed drape.",
+    "color": "#065f46",
+    "image": "https://picsum.photos/seed/streamline-tee-2/600/400"
+  }
+]
