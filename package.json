@@ -1,5 +1,5 @@
 {
-  "name": "react-firebase-otp",
+  "name": "react-supabase-otp",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "firebase": "^11.1.0",
+    "@supabase/storage-js": "^2.12.2",
+    "@supabase/supabase-js": "^2.56.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
