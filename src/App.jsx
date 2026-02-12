@@ -13,7 +13,7 @@ import ordersSeed from "./data/orders.json";
 let recaptchaVerifierInstance = null;
 
 function normalizePhone(value) {
-  return value.replace(/[^+\d]/g, "");
+  return value.replace(/\D/g, "").slice(0, 10);
 }
 
 function formatCurrency(amount) {
@@ -436,7 +436,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  const canSendOtp = useMemo(() => normalizePhone(phone).length >= 10, [phone]);
+  const canSendOtp = useMemo(() => normalizePhone(phone).length === 10, [phone]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -464,10 +464,15 @@ export default function App() {
   const sendOtp = async (event) => {
     event.preventDefault();
     setMessage("");
+    const localNumber = normalizePhone(phone);
+    if (localNumber.length !== 10) {
+      setMessage("Enter a valid 10-digit mobile number.");
+      return;
+    }
     setLoading(true);
     try {
       const verifier = setupRecaptcha();
-      const phoneNumber = normalizePhone(phone);
+      const phoneNumber = `+91${localNumber}`;
       const result = await signInWithPhoneNumber(auth, phoneNumber, verifier);
       setConfirmation(result);
       setMessage("OTP sent. Enter the code you received.");
@@ -520,24 +525,33 @@ export default function App() {
   return (
     <main className="app-shell">
       <section className="auth-card">
-        <h1>Streamline</h1>
-        <p className="subtitle">Sign in with your mobile number</p>
+        <div className="login-head">
+          <h1>Streamline</h1>
+          <p className="subtitle">Login with mobile number</p>
+        </div>
 
-        <form onSubmit={sendOtp} className="form-block">
-          <label htmlFor="phone">Phone number (E.164)</label>
-          <input
-            id="phone"
-            type="tel"
-            placeholder="+15551234567"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            autoComplete="tel"
-            required
-          />
-          <button className="btn" type="submit" disabled={!canSendOtp || loading}>
-            {loading ? "Sending..." : "Send OTP"}
-          </button>
-        </form>
+        {!confirmation && (
+          <form onSubmit={sendOtp} className="form-block">
+            <label htmlFor="phone">Mobile Number</label>
+            <div className="phone-input-group">
+              <span className="country-code">+91</span>
+              <input
+                id="phone"
+                type="tel"
+                placeholder="Enter 10-digit number"
+                value={phone}
+                onChange={(e) => setPhone(normalizePhone(e.target.value))}
+                autoComplete="tel"
+                inputMode="numeric"
+                maxLength={10}
+                required
+              />
+            </div>
+            <button className="btn" type="submit" disabled={!canSendOtp || loading}>
+              {loading ? "Sending..." : "Send OTP"}
+            </button>
+          </form>
+        )}
 
         {confirmation && (
           <form onSubmit={verifyOtp} className="form-block">
@@ -548,7 +562,8 @@ export default function App() {
               inputMode="numeric"
               placeholder="123456"
               value={otp}
-              onChange={(e) => setOtp(e.target.value)}
+              onChange={(e) => setOtp(e.target.value.replace(/\D/g, "").slice(0, 6))}
+              maxLength={6}
               required
             />
             <button className="btn" type="submit" disabled={loading}>

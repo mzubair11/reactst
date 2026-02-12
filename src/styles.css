@@ -47,12 +47,18 @@ p {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 18px;
-  padding: 20px;
+  padding: 22px;
   box-shadow: var(--shadow);
 }
 
+.login-head {
+  display: grid;
+  gap: 6px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
 .subtitle {
-  margin-top: 8px;
   color: var(--muted);
 }
 
@@ -74,6 +80,34 @@ select {
   border-radius: 12px;
   padding: 12px;
   background: #fff;
+}
+
+.phone-input-group {
+  display: grid;
+  grid-template-columns: 66px 1fr;
+  border: 1px solid #cfdcf0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.country-code {
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: #1e3a5f;
+  background: #f8fbff;
+  border-right: 1px solid #cfdcf0;
+}
+
+.phone-input-group input {
+  border: 0;
+  border-radius: 0;
+}
+
+.phone-input-group:focus-within {
+  outline: 2px solid #bfdbfe;
+  border-color: #93c5fd;
 }
 
 input:focus,
